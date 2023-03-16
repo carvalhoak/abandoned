@@ -1,4 +1,4 @@
-import './functions';
+
 import './App.css';
 import { useEffect, useState} from 'react';
 
@@ -21,6 +21,8 @@ function App() {
         type="text" 
         name="task"
         onChange={e => setItem(e.target.value)}
+        autoComplete = "off"
+        value={item}
       />
 
       <button onClick={() => {
@@ -31,11 +33,19 @@ function App() {
         }, ...list]);
       }}> Add </button>
 
+      {
+        /*
+          Verificar o botão de deletar pq ele tá esquisito
+        */
+      }
       <ul>
         {list.map((item, index) => (
           <li key={index.id}>
             {item.text}
-            <button>Delete</button>
+            <button onClick={() => {
+              list.splice(index,1);
+            }
+            }>Delete</button>
             <button>Edit</button>
           </li>
         ))}
