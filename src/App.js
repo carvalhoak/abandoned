@@ -1,4 +1,4 @@
-
+import { deleteTask } from './functions';
 import './App.css';
 import { useEffect, useState} from 'react';
 
@@ -35,18 +35,27 @@ function App() {
 
       {
         /*
-          Verificar o botão de deletar pq ele tá esquisito
+          Verificar o botão de deletar pq ele tá esquisito 
+          Também ver o checkbox
         */
       }
       <ul>
         {list.map((item, index) => (
+          
           <li key={index.id}>
+            <input 
+            type={'checkbox'} 
+            id={list.length}
+            />
             {item.text}
-            <button onClick={() => {
-              list.splice(index,1);
-            }
-            }>Delete</button>
-            <button>Edit</button>
+            <button onClick={() => deleteTask(list, index) }>Delete</button>
+
+            <input
+              type={'button'}
+              value='Edit'
+              id='index'
+            />
+
           </li>
         ))}
       </ul>
